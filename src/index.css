@@ -1,0 +1,216 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* NeuroBeats Design System
+   All colors MUST be HSL.
+   Primary: Deep Orange | Secondary: Charcoal | Accent: White
+   Aesthetic: Confident, Industrial, Modern, High-impact but controlled
+*/
+
+@layer base {
+  :root {
+    /* NeuroBeats Dark Theme - Default */
+    --background: 0 0% 10%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 13%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 12%;
+    --popover-foreground: 0 0% 100%;
+
+    /* Deep Orange - Primary accent */
+    --primary: 24 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Charcoal - Secondary */
+    --secondary: 0 0% 18%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 24 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 18%;
+    --ring: 24 100% 50%;
+
+    --radius: 0.5rem;
+
+    /* NeuroBeats Custom Tokens */
+    --deep-orange: 24 100% 50%;
+    --deep-orange-glow: 24 100% 60%;
+    --charcoal: 0 0% 13%;
+    --charcoal-light: 0 0% 18%;
+    --charcoal-dark: 0 0% 10%;
+    --surface: 0 0% 15%;
+    --surface-elevated: 0 0% 18%;
+
+    /* Shadows - Industrial feel */
+    --shadow-orange: 0 0 60px hsl(24 100% 50% / 0.25);
+    --shadow-card: 0 8px 32px hsl(0 0% 0% / 0.5);
+    --shadow-glow: 0 4px 20px hsl(24 100% 50% / 0.3);
+
+    --sidebar-background: 0 0% 10%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 24 100% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 24 100% 50%;
+  }
+
+  .dark {
+    /* Dark mode is default for NeuroBeats */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+@layer utilities {
+  /* Breathing animation - slow and intentional */
+  .animate-breathe {
+    animation: breathe 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* Floating animation - heavy and slow */
+  .animate-float {
+    animation: float 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* Pulse glow - subtle */
+  .animate-pulse-glow {
+    animation: pulse-glow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* Waveform draw animation */
+  .animate-draw {
+    animation: draw 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  /* Gradient text - orange */
+  .text-gradient-orange {
+    background: linear-gradient(135deg, hsl(var(--deep-orange)), hsl(var(--deep-orange-glow)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glow effects */
+  .glow-orange {
+    box-shadow: 0 0 40px hsl(var(--deep-orange) / 0.4);
+  }
+
+  .glow-orange-subtle {
+    box-shadow: 0 0 20px hsl(var(--deep-orange) / 0.2);
+  }
+
+  /* Magnetic button effect base */
+  .magnetic-button {
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  /* Glass effect for navigation */
+  .glass-nav {
+    background: hsl(0 0% 10% / 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  /* Noise texture overlay */
+  .noise-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.02;
+    pointer-events: none;
+  }
+
+  /* Smooth transitions for all interactive elements */
+  .transition-smooth {
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+}
+
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.015);
+    opacity: 0.9;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.5;
+    filter: blur(20px);
+  }
+  50% {
+    opacity: 0.8;
+    filter: blur(25px);
+  }
+}
+
+@keyframes draw {
+  from {
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
